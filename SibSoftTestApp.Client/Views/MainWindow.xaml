@@ -1,0 +1,152 @@
+﻿<Window x:Class="SibSoftTestApp.Client.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SibSoftTestApp.Client.Validators"
+        mc:Ignorable="d"
+        Title="SibSoftTestApp" Height="900" Width="1350" ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen" Background="LightGray">
+    <Window.Resources>
+        <local:FloatValidationRule x:Key="FloatValidationRule"/>
+    </Window.Resources>
+    <Grid x:Name="mainGrid" Height="850" HorizontalAlignment="Center" Width="1300">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="106*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+            <RowDefinition Height="213*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+            <RowDefinition Height="159*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="293"></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition Width="9*"></ColumnDefinition>
+            <ColumnDefinition Width="9*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.RowSpan="2" 
+                    FontWeight="Bold" FontSize="18" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Height="24" Width="80" Margin="0,94,0,0">
+                    Заказчик
+        </TextBlock>
+        <TextBlock 
+                    Grid.Row="2" Grid.RowSpan="2" 
+                    FontWeight="Bold" FontSize="18" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Height="24" Width="122">
+                    Исполнитель
+        </TextBlock>
+        <TextBlock 
+                    Grid.Row="4" 
+                    FontWeight="Bold" FontSize="18"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Height="22" Width="208">
+                    Транспортное средство
+        </TextBlock>
+        <TextBlock Grid.Row="5" Text="Вид ремонта" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="112"/>
+        <TextBlock Grid.Row="6" Text="Дата проведения ремонта" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="232"/>
+        <TextBlock Grid.Row="7" Text="Стоимость ремонта" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="172"/>
+        <TextBlock Grid.Row="8" Text="Пробег" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="64"/>
+        <DatePicker x:Name="serviceDatePicker" Grid.Row="6" Grid.Column="1" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Height="32" Width="132" Margin="93,0,0,0"/>
+
+        <TextBox
+                    Text="{Binding customerName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='Наименование заказчика',FallbackValue='Наименование заказчика'}" 
+                    x:Name="customerNameTextBox" 
+                    Grid.Column="1" Grid.ColumnSpan="3" 
+                    VerticalContentAlignment="Center" VerticalAlignment="Top" 
+                    Height="47" 
+                    FontSize="16" Foreground="LightGray" 
+                    BorderBrush="DarkGray"
+                    GotFocus="customerNameTextBox_GotFocus" LostFocus="customerNameTextBox_LostFocus" Margin="0,56,0,0"/>
+        <TextBox 
+                    Text="{Binding customerTaxNumber,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='ИНН заказчика',FallbackValue='ИНН заказчика'}" 
+                    x:Name="customerTaxNumberTextBox" 
+                    Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" 
+                    VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                    Height="47" 
+                    FontSize="16" Foreground="LightGray" 
+                    BorderBrush="DarkGray"
+                    GotFocus="customerTaxNumberTextBox_GotFocus" LostFocus="customerTaxNumberTextBox_LostFocus">
+        </TextBox>
+        <TextBox 
+                    Text="{Binding performerName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='Наименование исполнителя',FallbackValue='Наименование исполнителя'}" 
+                    x:Name="performerNameTextBox" 
+                    Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" 
+                    VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                    Height="47" 
+                    FontSize="16" Foreground="LightGray" 
+                    BorderBrush="DarkGray"
+                    GotFocus="performerNameTextBox_GotFocus" LostFocus="performerNameTextBox_LostFocus">
+        </TextBox>
+        <TextBox
+                    Text="{Binding performerTaxNumber,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='ИНН исполнителя',FallbackValue='ИНН исполнителя'}" 
+                    x:Name="performerTaxNumberTextBox" 
+                    Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" 
+                    VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                    Height="47"
+                    FontSize="16" Foreground="LightGray" 
+                    BorderBrush="DarkGray"
+                    GotFocus="performerTaxNumberTextBox_GotFocus" LostFocus="performerTaxNumberTextBox_LostFocus">
+        </TextBox>
+        <TextBox
+                    Text="{Binding vehicleNumber,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='Госномер',FallbackValue='Госномер'}" 
+                    x:Name="vehicleNumberTextBox" 
+                    Grid.Column="1" Grid.Row="4" 
+                    VerticalContentAlignment="Center"
+                    FontSize="16" Foreground="LightGray" 
+                    BorderBrush="DarkGray"
+                    GotFocus="vehicleNumberTextBox_GotFocus" LostFocus="vehicleNumberTextBox_LostFocus" Grid.ColumnSpan="2" Margin="0,3,323,3"/>
+        <TextBox 
+                    Text="{Binding vehicleBrand,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='Марка',FallbackValue='Марка'}" 
+                    x:Name="vehicleBrandTextBox" 
+                    Grid.Column="2" Grid.Row="4" 
+                    VerticalContentAlignment="Center"
+                    FontSize="16" Foreground="LightGray" 
+                    BorderBrush="DarkGray"
+                    GotFocus="vehicleBrandTextBox_GotFocus" LostFocus="vehicleBrandTextBox_LostFocus" Margin="0,3,0,3"/>
+        <TextBox 
+                    Text="{Binding vehicleModel,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='Модель',FallbackValue='Модель'}" 
+                    x:Name="vehicleModelTextBox" 
+                    Grid.Column="2" Grid.Row="4" 
+                    VerticalContentAlignment="Center"
+                    FontSize="16" Foreground="LightGray"
+                    BorderBrush="DarkGray"
+                    GotFocus="vehicleModelTextBox_GotFocus" LostFocus="vehicleModelTextBox_LostFocus" Grid.ColumnSpan="2" Margin="323,3,0,3"/>
+        <TextBox 
+                    Text="{Binding vehicleServiceDescription,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='Вид ремонта',FallbackValue='Вид ремонта'}"
+                    x:Name="vehicleServiceDescriptionTextBox" 
+                    Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" 
+                    FontSize="16" Foreground="LightGray"
+                    BorderBrush="DarkGray"
+                    AcceptsReturn="true"
+                    GotFocus="vehicleServiceDescriptionTextBox_GotFocus" LostFocus="vehicleServiceDescriptionTextBox_LostFocus" Margin="0,53,0,53" Grid.RowSpan="3">
+        </TextBox>
+        <TextBox 
+                    Text="{Binding servicePrice,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='Стоимость ремонта',FallbackValue='Стоимость ремонта'}" 
+                    x:Name="servicePriceTextBox" 
+                    Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" 
+                    VerticalContentAlignment="Center"
+                    FontSize="16" Foreground="LightGray"
+                    BorderBrush="DarkGray"
+                    GotFocus="servicePriceTextBox_GotFocus" LostFocus="servicePriceTextBox_LostFocus" Margin="0,3,0,3"/>
+        <TextBox 
+                    Text="{Binding vehicleMileage,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,TargetNullValue='Пробег',FallbackValue='Пробег'}" 
+                    x:Name="vehicleMileageTextBox" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" 
+                    VerticalContentAlignment="Center"
+                    FontSize="16" Foreground="LightGray"
+                    BorderBrush="DarkGray"
+                    GotFocus="vehicleMileageTextBox_GotFocus" LostFocus="vehicleMileageTextBox_LostFocus" Margin="0,4,0,2"/>
+        <TextBlock Grid.Column="3" Grid.Row="7" Text=" руб." FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Width="186" Margin="10,0,0,0"/>
+        <TextBlock Grid.Column="3" Grid.Row="8" Text=" км" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Width="186" Margin="10,0,0,0"/>
+
+        <Button x:Name="saveBtn" Content="Сохранить" Background="LightGreen" Foreground="White" HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Top" Height="40" Width="250" FontWeight="Bold" Click="saveBtn_Click" Grid.Column="1" Margin="0,81,0,0"/>
+        <Button x:Name="clearBtn" Content="Очистить форму" Background="LightCoral" Foreground="White" HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Top" Height="40" Width="250" FontWeight="Bold" Click="clearBtn_Click" Grid.Column="2" Grid.ColumnSpan="2" Margin="323,86,0,0"/>
+    </Grid>
+</Window>

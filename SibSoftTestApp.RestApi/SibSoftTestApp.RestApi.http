@@ -1,0 +1,6 @@
+@SibSoftTestApp.RestApi_HostAddress = http://localhost:44316
+
+GET {{SibSoftTestApp.RestApi_HostAddress}}
+Accept: application/json
+
+###
